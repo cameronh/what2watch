@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -8,6 +10,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
@@ -15,6 +21,10 @@ module.exports = {
   resolve: {
     modules: [__dirname, 'src', 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+    fallback: {
+      "path": require.resolve('path-browserify'),
+      "fs": false
+    }
   },
   module: {
     rules: [
