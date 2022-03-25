@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ user }) => {
-  const [userMenuOpen, setUserMenuOpen] = useState(true);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   return (
     <nav className="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
@@ -25,7 +25,7 @@ const Navbar = ({ user }) => {
             <polyline points="16 3 12 7 8 3" />
           </svg>
           <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
-            What2Watch
+            <Link to="/">What2Watch</Link>
           </span>
         </div>
         <div className="flex items-center md:order-2 relative">
@@ -79,7 +79,7 @@ const Navbar = ({ user }) => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/logout"
                         className="block py-2 px-4 text-sm hover:bg-gray-600 text-gray-200 hover:text-white"
                       >
                         Sign Out
